@@ -53,10 +53,12 @@ const mongoose = require('mongoose');
  const usuario = "expressVete"
  const password = "PX5scYdDlkyN0DoI"
  const dbName = "veterinaria"
+console.log('Usuario'+process.env.USUARIO);
 
-const uri = `mongodb+srv://${usuario}:${password}@cluster0.sgfeuwe.mongodb.net/${dbName}?retryWrites=true&w=majority`;
+//const uri = `mongodb+srv://${usuario}:${password}@cluster0.sgfeuwe.mongodb.net/${dbName}?retryWrites=true&w=majority`;
 //const uri = `mongodb+srv://${process.env.USUARIO}:${process.env.PASSWORD}@cluster0.sgfeuwe.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`;
-
+//const uri = `mongodb+srv://${process.env.USUARIO}:${process.env.PASSWORD}@cluster0.ncdk5.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://${process.env.USUARIO}:${process.env.PASSWORD}@cluster0.sgfeuwe.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`;
 //mongodb+srv://expressVete:<password>@cluster0.sgfeuwe.mongodb.net/?retryWrites=true&w=majority
 
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })

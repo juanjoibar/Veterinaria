@@ -32,6 +32,23 @@ console.log('hola')
      }
  })
 
+ router.get('/', async(req,res)=>{
+    try {
+       console.log('hola3');
+
+        const arrayMascotasDB = await Mascota.find()
+        console.log(arrayMascotasDB)
+        res.render("jason", {
+           listaMascotas: arrayMascotasDB
+        })
+
+    } catch (error) {
+        console.log(error)
+    }
+})
+
+
+
 
 // router.get('/crear',(req,res)=>{
 //     res.render('crear')
