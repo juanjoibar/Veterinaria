@@ -1,1 +1,39 @@
-<%-  %> 
+<%- include('template/cabecera', {tituloweb: 'Inicio EJS'}); %>
+
+<h1>Hola a EJS Mascotas</h1>
+
+<div>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Descripcion</th>
+            <% if (listaMascotas.length >0 ) { %>
+            <th scope="col"> TIENE DATOS</th>
+            <% } %>
+          </tr>
+        </thead>
+        <tbody>
+            
+            
+            <% if (listaMascotas.length >0 ) { %> 
+                <% listaMascotas.forEach(element => { %> 
+                    
+                    <tr>
+                      <th scope="row"> <%= element.id %> </th>
+                      <td><%= element.nombre %></td>
+                      <td><%= element.descripcion %></td>
+                      <td>@mdo</td>
+                    </tr>
+                    
+                
+                
+                
+                <% }) %> 
+                <% } %>
+            </tbody>
+          </table>
+    </div>
+
+<%- include('template/footer'); %>
