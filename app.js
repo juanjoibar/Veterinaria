@@ -34,7 +34,7 @@ const port = process.env.PORT || 3000;
 //Rutas web
 app.use(express.static(__dirname + "/public"));
 //importar rutas
-const authRoutes = require('./router/Rutasweb');
+const authRoutes = require(__dirname +'/router/Rutasweb');
 const validaToken = require('./router/validate-token');
 const admin = require('./router/admin');
 
