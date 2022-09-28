@@ -23,6 +23,21 @@ router.get('/json',async(req, res) => {
  
          const arrayMascotasDB = await Mascota.find()
          console.log(arrayMascotasDB)
+         for (let i = 0; i < 15; i++) {
+            
+            arrayMascotasDB.push( {
+              
+               nombre: 'Mandy'+i.toString(),
+               descripcion: 'Salchicha'
+             }) 
+             
+             
+            }
+            arrayMascotasDB.push( {
+           
+            nombre: 'Lon',
+            descripcion: 'Dogo'
+          }) 
          res.json(
             arrayMascotasDB
          )

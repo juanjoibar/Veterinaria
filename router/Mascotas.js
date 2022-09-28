@@ -23,6 +23,12 @@ console.log('hola')
 
          const arrayMascotasDB = await Mascota.find()
          console.log(arrayMascotasDB)
+
+         arrayMascotasDB.push( {
+           
+            nombre: 'Mandy',
+            descripcion: 'Salchicha'
+          })  
          res.render("mascotas", {
             listaMascotas: arrayMascotasDB
          })
@@ -38,6 +44,17 @@ console.log('hola')
 
         const arrayMascotasDB = await Mascota.find()
         console.log(arrayMascotasDB)
+        console.log('hola4');
+        arrayMascotasDB.push( {
+           
+            nombre: 'Mandy2',
+            descripcion: 'Salchicha2'
+          }) 
+          arrayMascotasDB.push( {
+           
+            nombre: 'Lon',
+            descripcion: 'Dogo'
+          }) 
         res.render("jason", {
            listaMascotas: arrayMascotasDB
         })
