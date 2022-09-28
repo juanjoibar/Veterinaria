@@ -6,7 +6,7 @@ frutas.forEach((fruta) => {
 
 const  cowsay = require("cowsay");
 console.log(cowsay.say({
-    text: "soy un modulo",
+    text: "Estamos programando",
     e : "o0",
     T : "U "
 }));
@@ -14,12 +14,16 @@ console.log(cowsay.say({
 const express = require('express');
 //const express = require("express");
 //const app = express();
-
-
-
+require('dotenv').config()
 
 const bodyParser = require('body-parser'); 
+// capturar body
+
+
 const app = express();
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 //require('dotenv').config()
 const port = process.env.PORT || 3000; 
 
@@ -29,6 +33,15 @@ const port = process.env.PORT || 3000;
 //  });
 //Rutas web
 app.use(express.static(__dirname + "/public"));
+//importar rutas
+const authRoutes = require('./router/Rutasweb');
+const validaToken = require('./router/validate-token');
+const admin = require('./router/admin');
+
+// routes middlewares
+app.use('/api/user',authRoutes)
+app.use('/api/admin',validaToken,admin);
+
 app.use('/', require('./router/RutasWeb'));
 app.use('/mascotas', require('./router/Mascotas'));
 
