@@ -1,18 +1,38 @@
 <%- include('template/cabecera', {tituloweb: 'Inicio EJS'}); %>
-
-<h1>Hola estoy usando EJS con <%= titulo %></h1>
-<h2> Registro de usuario</h2>
+<h1> Bienvenidos a Express</h1>
+<h2>Buenas este es un servidor express que esta usando EJS con <%= titulo %></h2>
 
 <div class="container">
+    <h2> Registro de usuario</h2>
     
     <p>
-        Para verficicar el servicio del servidor express podemos probar de registrar un usuario a traves de postman 
-    
+        Para verficicar que el servidor express esta antendiendo altas de usuarios podemos probar de registrar un usuario a traves de postman 
+        A continuacion te detallo los pasos:
     </p>
-              
+        <li>
+            <a href="https://express-veterianaria.herokuapp.com/api/admin
+            "> carga la siguente url en https://express-veterianaria.herokuapp.com/api/admin
+            </a> 
+
+                      
+
+        </li>
+        <li>
+            selecciona el metodo POST
+        </li>
+        <li>
+            seleccion cargar el Body y pega un este Json:
+            {
+                "nombre": "Daniel",
+                "email": "juanLope@gmail.com",
+                "password": "1234567"
+            
+            }
+        </li>
+
     <img src="../img/postman-registro.jpg" alt="Alta de usuario" width="300">
 </div>
-<div>
+<div class="container">
 
     <h2> Login y recepcion de token</h2>
               
@@ -24,7 +44,7 @@
 
 
 </div>
-<div>
+<div class="container">
     <h2> ingreso a ruta protegida con token</h2>
     <p>
         Para logear el usuario y recibir el token
