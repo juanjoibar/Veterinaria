@@ -32,7 +32,7 @@ const port = process.env.PORT || 3000;
 //    res.send('Hello World!');
 //  });
 //Rutas web
-app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname + "/Public"));
 //importar rutas
 const authRoutes = require( './router/RutasWeb');
 const validaToken = require('./router/validate-token');
