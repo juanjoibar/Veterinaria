@@ -48,6 +48,10 @@ router.get('/json',async(req, res) => {
 
 })
 
+router.get('/crear', (req, res) => {
+    res.render("crear", {tituloServicios: "Este es un mensaje dinámico de servicios"})
+})
+
 router.get('/detalle', (req, res) => {
     res.render("detalle", {tituloServicios: "Este es un mensaje dinámico de servicios"})
 })

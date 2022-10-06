@@ -54,8 +54,103 @@ console.log('hola')
         console.log(error)
     }
 })
+router.get('/:id', async(req,res)=>{
+   const id = req.params.id 
+    try {
+        const mascotaDB = await Mascota.findOne({_id: id})
+        console.log(mascotaDB);
+        res.render('detalle', {
+            mascota: mascotaDB,
+            error: false
+        })
+    } catch (error) {
+       console.log(error) 
+       res.render('detalle', {
+        mensaje: 'No se encontro la mascota' ,
+        error: true
+    })
+    }
+})
+router.delete('/:id', async(req,res)=>{
+    const id = req.params.id
+    try {
+        const mascotaDB = await Mascota.findByIdAndDelete({_id: id})
+            if(mascotaDB){
+                res.json({
+                    estado:true,
+                    mensaje: 'eliminado'
+                })
+            }else{
+                res.json({
+                    estado:false,
+                    mensaje: 'No se pudo eliminar'
+                })
 
 
+            }
+
+    } catch (error) {
+        console.log(error);
+    }
+})
+
+router.post('/', async(req,res)=>
+{
+    const body = req.body
+    //console.log(body.nombre)
+    try {
+        const mascotaDB = new Mascota(body)
+        await mascotaDB.save()
+        console.log(mascotaDB)
+        res.redirect('/mascotas')
+
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+)
+router.delete('/:id', async(req,res)=>{
+    const id = req.params.id
+    try {
+        const mascotaDB = await Mascota.findByIdAndDelete({_id: id})
+            if(mascotaDB){
+                res.json({
+                    estado:true,
+                    mensaje: 'eliminado'
+                })
+            }else{
+                res.json({
+                    estado:false,
+                    mensaje: 'No se pudo eliminar'
+                })
+
+
+            }
+
+    } catch (error) {
+        console.log(error);
+    }
+})
+
+router.put('/:id', async(req,res)=>{
+    const id = req.params.id
+    const body = req.body
+    try {
+        const mascotaDB = await Mascota.findByIdAndUpdate(id,body,{useFindAndModify:false})
+            
+            
+                res.json({
+                    estado:true,
+                    mensaje: 'Editado'
+                })
+            
+    }
+
+     catch (error) {
+        console.log(error);
+    }
+})
 
 
 // router.get('/crear',(req,res)=>{

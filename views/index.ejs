@@ -1,6 +1,8 @@
 <%- include('template/cabecera', {tituloweb: 'Inicio EJS'}); %>
 <h1> Bienvenidos a Express</h1>
 <h2>Buenas este es un servidor express que esta usando EJS con <%= titulo %></h2>
+    <br>
+    <br>
 
 <div class="container">
     <h2> Registro de usuario</h2>
@@ -22,12 +24,12 @@
         </li>
         <li>
             seleccion cargar el Body y pega un este Json:
-            {
-                "nombre": "Daniel",
-                "email": "juanLope@gmail.com",
+            <b> {
+            "nombre": "Daniel",
+            "email": "juanLope@gmail.com",
                 "password": "1234567"
             
-            }
+            } </b>
         </li>
         <br>
 
@@ -37,7 +39,7 @@
 
     <h2> Login y recepcion de token</h2>
               
-    <img src="./img/postman-login.jpg" alt="Login de usuario" width="300">
+    <img src="./img/postman-login.jpg" alt="Login de usuario" width="300" class="mx-auto d-block">
     <p>
         Para logear el usuario y recibir el token
     
@@ -46,10 +48,10 @@
 
 </div>
 <div class="container">
-    <h2> ingreso a ruta protegida con token</h2>
+    <h2> Ingreso a ruta protegida con un token ya generado</h2>
     <p>
         Para logear el usuario y recibir el token
-        En postman: cargar la siguente url
+        En postman: cargar la siguente url:
         <li>
            <a href="https://express-veterianaria.herokuapp.com/api/admin
            ">https://express-veterianaria.herokuapp.com/api/admin
@@ -65,7 +67,7 @@
 
     </p>
 
-    <img src="./img/posman-token%20Acceso.png" alt="Ingreso de ruta protegida con token" width="300">
+    <img src="./img/posman-token%20Acceso.png" alt="Ingreso de ruta protegida con token" width="300"  class="mx-auto d-block">
 </div>
 
 

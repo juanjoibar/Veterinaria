@@ -2,7 +2,10 @@
 
 <h1>Listado con EJS de Mascotas desde base Mongo</h1>
 
-<div>
+<div class="container">
+  <a class="btn btn-success btn-block my-4" href="/crear">
+    Crear nueva Mascota
+  </a>
     <table class="table">
         <thead>
           <tr>
@@ -10,7 +13,7 @@
             <th scope="col">Nombre</th>
             <th scope="col">Descripcion</th>
             <% if (listaMascotas.length >0 ) { %>
-            <th scope="col"> FUNCIONES</th>
+            <th scope="col"> Accion</th>
             <% } %>
           </tr>
         </thead>
@@ -24,7 +27,15 @@
                       <th scope="row"> <%= element.id %> </th>
                       <td><%= element.nombre %></td>
                       <td><%= element.descripcion %></td>
-                      <td>@mdo</td>
+                      <td>
+                        <a
+                        
+                        class= "btn btn-warning btn-sm"
+                        href="mascotas/<%= element.id %>"
+                        
+                        >Editar
+                        </a>
+                      </td>
                     </tr>
                     
                 
