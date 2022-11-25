@@ -1,5 +1,10 @@
 // RutasWeb.js
+
+const axios = require('axios');
 const express = require('express');
+const cheerio = require('cheerio');
+const cheerio2 = require('cheerio');
+
 const router = express.Router();
 const Mascota = require('../models/mascota');
 // constraseña
@@ -47,6 +52,67 @@ router.get('/json',async(req, res) => {
      }
 
 })
+
+
+
+
+router.get('/jscraping',async(req, res) => {
+    //  res.render("jason", {tituloServicios: "Este es un mensaje dinámico de servicios"})
+      // res.json(
+      //     {estado:true,
+      //     mensaje:'funciona'})
+      
+  
+      try {
+          console.log('hola3');
+   
+           const {data} = await axios.get("https://dolarhoy.com/");
+           var dolar = cheerio.load(data);
+          
+         
+            var selectorDolarBlue = "#home_0 > div.modulo.modulo_bloque > section > div > div > div > div.tile.is-parent.is-9.cotizacion.is-vertical > div > div.tile.is-parent.is-5 > div > div.values > div.venta > div.val"
+            var selectorDolarOficial = "#home_0 > div.modulo.modulo_bloque > section > div > div > div > div.tile.is-parent.is-9.cotizacion.is-vertical > div > div.tile.is-parent.is-7.is-vertical > div:nth-child(2) > div > div.venta > div.val"
+            var SelectoFecha = "#home_0 > div.modulo.modulo_bloque > section > div > div > div > div.tile.is-parent.is-9.cotizacion.is-vertical > div > div.tile.is-parent.is-5 > div > div.tile.update > span"
+           console.log('test:');
+
+       } catch (error) {
+           console.log(error)
+       }
+       try {
+        const {data} = await axios.get("https://www.bna.com.ar/Personas");
+        var euro = cheerio2.load(data);
+        var selectorEuroOficial = "#billetes > table > tbody > tr:nth-child(2) > td:nth-child(3)"
+           
+        
+       } catch (error) {
+        
+    }
+    const dolarOficial =   parseFloat(dolar(selectorDolarOficial).text().slice(1,-1)    );
+    const dolarTarj =    dolarOficial*0.3 + dolarOficial*0.45  + dolarOficial*1 
+    const dolarQuat =    dolarOficial*0.3 + dolarOficial*0.45 + dolarOficial*0.25  + dolarOficial*1 
+    const dolarTarjeta = '$' + dolarTarj
+    const dolarQuatar = '$' + dolarQuat
+    console.log(dolarTarjeta) ;
+
+       const objetoValores = {
+        FechaActualizacion: dolar(SelectoFecha).text(),
+        DolarBlue:  dolar(selectorDolarBlue).text(),
+        DolarOficial: dolar(selectorDolarOficial).text(), 
+        EuroOficial: euro(selectorEuroOficial).text(),
+        DolarTarjeta: dolarTarjeta ,
+        DolarQuatar: dolarQuatar
+        };
+
+       res.json(
+        objetoValores
+       );
+
+  
+  })
+
+
+
+
 
 router.get('/crear', (req, res) => {
     res.render("crear", {tituloServicios: "Este es un mensaje dinámico de servicios"})
