@@ -88,8 +88,8 @@ router.get('/jscraping',async(req, res) => {
         
     }
     const dolarOficial =   parseFloat(dolar(selectorDolarOficial).text().slice(1,-1)    );
-    const dolarTarj =    dolarOficial*0.3 + dolarOficial*0.45  + dolarOficial*1 
-    const dolarQuat =    dolarOficial*0.3 + dolarOficial*0.45 + dolarOficial*0.25  + dolarOficial*1 
+    const dolarTarj =    dolarOficial*0.3 + dolarOficial*0.3  + dolarOficial*1 
+    const dolarQuat =    dolarOficial*0.3 + dolarOficial*0.3 + dolarOficial*0.25  + dolarOficial*1 
     const dolarTarjeta = '$' + dolarTarj
     const dolarQuatar = '$' + dolarQuat
     console.log(dolarTarjeta) ;
