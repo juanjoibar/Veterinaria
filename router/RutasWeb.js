@@ -72,6 +72,8 @@ router.get('/jscraping',async(req, res) => {
          
             var selectorDolarBlue = "#home_0 > div.modulo.modulo_bloque > section > div > div > div > div.tile.is-parent.is-9.cotizacion.is-vertical > div > div.tile.is-parent.is-5 > div > div.values > div.venta > div.val"
             var selectorDolarOficial = "#home_0 > div.modulo.modulo_bloque > section > div > div > div > div.tile.is-parent.is-9.cotizacion.is-vertical > div > div.tile.is-parent.is-7.is-vertical > div:nth-child(2) > div > div.venta > div.val"
+            var selectorDolarCripto = "#home_0 > div.modulo.modulo_bloque > section > div > div > div > div.tile.is-parent.is-9.cotizacion.is-vertical > div > div.tile.is-parent.is-7.is-vertical > div:nth-child(2) > div > div.venta > div.val"
+
             var SelectoFecha = "#home_0 > div.modulo.modulo_bloque > section > div > div > div > div.tile.is-parent.is-9.cotizacion.is-vertical > div > div.tile.is-parent.is-5 > div > div.tile.update > span"
            console.log('test:');
 
@@ -91,7 +93,7 @@ router.get('/jscraping',async(req, res) => {
     const dolarTarj =    dolarOficial*0.3 + dolarOficial*0.3  + dolarOficial*1 
     const dolarQuat =    dolarOficial*0.3 + dolarOficial*0.3 + dolarOficial*0.25  + dolarOficial*1 
     const dolarTarjeta = '$' + dolarTarj
-    const dolarQuatar = '$' + dolarQuat
+    const dolarQuatar = '$' + parseFloat(dolar(selectorDolarCripto).text().slice(1,-1)    ); 
     console.log(dolarTarjeta) ;
 
        const objetoValores = {
@@ -100,7 +102,7 @@ router.get('/jscraping',async(req, res) => {
         DolarOficial: dolar(selectorDolarOficial).text(), 
         EuroOficial: euro(selectorEuroOficial).text(),
         DolarTarjeta: dolarTarjeta ,
-        DolarQuatar: dolarQuatar
+        DolarCripto: dolar(selectorDolarCripto).text(), 
         };
 
        res.json(
