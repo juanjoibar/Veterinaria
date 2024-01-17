@@ -103,7 +103,8 @@ router.get('/jscraping',async(req, res) => {
         DolarOficial: dolar(selectorDolarOficial).text(), 
         EuroOficial: euro(selectorEuroOficial).text(),
         DolarTarjeta: dolarTarjeta ,
-        DolarCripto: dolar(selectorDolarBolsa).text(), 
+        DolarCripto: dolar(selectorDolarCripto).text(),
+        DolarBolsa: dolar(selectorDolarBolsa).text(),  
         };
 
        res.json(
